@@ -1,0 +1,224 @@
+{
+  "name": "AI Lead Qualification & Enrichment ? Cloud Demo",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "cloud-01",
+      "name": "01 Demo Input",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const rows = [{\"company_name\":\"Ridgewell Motion Systems\",\"website\":\"ridgewell-motion.example\",\"first_name\":\"Olivia\",\"last_name\":\"Grant\",\"job_title\":\"VP Procurement\",\"country\":\"United States\",\"industry\":\"Industrial Machinery\",\"employee_count\":\"420\"},{\"company_name\":\"Northstar Fabrication\",\"website\":\"northstar-fabrication.example\",\"first_name\":\"Daniel\",\"last_name\":\"Reed\",\"job_title\":\"Director of Supply Chain\",\"country\":\"USA\",\"industry\":\"Manufacturing\",\"employee_count\":\"280\"},{\"company_name\":\"Cedarline Industrial Services\",\"website\":\"cedarline-industrial.example\",\"first_name\":\"Maya\",\"last_name\":\"Collins\",\"job_title\":\"Head of Operations\",\"country\":\"US\",\"industry\":\"Industrial Services\",\"employee_count\":\"95\"},{\"company_name\":\"Ironvale Equipment\",\"website\":\"ironvale-equipment.example\",\"first_name\":\"Ethan\",\"last_name\":\"Price\",\"job_title\":\"Director of Purchasing\",\"country\":\"United States\",\"industry\":\"Equipment Manufacturing\",\"employee_count\":\"760\"},{\"company_name\":\"Blueforge Engineering\",\"website\":\"blueforge-engineering.example\",\"first_name\":\"Sophia\",\"last_name\":\"Kim\",\"job_title\":\"VP Human Resources\",\"country\":\"United States\",\"industry\":\"Engineering Services\",\"employee_count\":\"180\"},{\"company_name\":\"Summit Gearworks\",\"website\":\"summit-gearworks.example\",\"first_name\":\"Noah\",\"last_name\":\"Bennett\",\"job_title\":\"Talent Acquisition Manager\",\"country\":\"United States\",\"industry\":\"Industrial Manufacturing\",\"employee_count\":\"55\"},{\"company_name\":\"Atlas Valve & Pump\",\"website\":\"atlas-valve.example\",\"first_name\":\"Ava\",\"last_name\":\"Turner\",\"job_title\":\"Plant Manager\",\"country\":\"United States\",\"industry\":\"Industrial Equipment\",\"employee_count\":\"610\"},{\"company_name\":\"Harborline Components\",\"website\":\"harborline-components.example\",\"first_name\":\"Liam\",\"last_name\":\"Walker\",\"job_title\":\"Procurement Manager\",\"country\":\"United States\",\"industry\":\"Manufacturing\",\"employee_count\":\"340\"},{\"company_name\":\"Pioneer Automation\",\"website\":\"pioneer-automation.example\",\"first_name\":\"Isabella\",\"last_name\":\"Chen\",\"job_title\":\"Operations Director\",\"country\":\"United States\",\"industry\":\"Industrial Automation\",\"employee_count\":\"1250\"},{\"company_name\":\"Granite Field Services\",\"website\":\"granite-field.example\",\"first_name\":\"James\",\"last_name\":\"Foster\",\"job_title\":\"Supply Chain Lead\",\"country\":\"Canada\",\"industry\":\"Industrial Services\",\"employee_count\":\"190\"},{\"company_name\":\"Silver Creek Distribution\",\"website\":\"silver-creek.example\",\"first_name\":\"Amelia\",\"last_name\":\"Hayes\",\"job_title\":\"Purchasing Manager\",\"country\":\"United States\",\"industry\":\"Distribution\",\"employee_count\":\"85\"},{\"company_name\":\"Oakspan Construction\",\"website\":\"oakspan-construction.example\",\"first_name\":\"Lucas\",\"last_name\":\"Morgan\",\"job_title\":\"Operations Supervisor\",\"country\":\"United States\",\"industry\":\"Construction\",\"employee_count\":\"460\"},{\"company_name\":\"Westbridge Logistics\",\"website\":\"westbridge-logistics.example\",\"first_name\":\"Charlotte\",\"last_name\":\"Evans\",\"job_title\":\"HR Manager\",\"country\":\"United States\",\"industry\":\"Logistics\",\"employee_count\":\"140\"},{\"company_name\":\"Meridian Design Studio\",\"website\":\"meridian-design.example\",\"first_name\":\"Benjamin\",\"last_name\":\"Scott\",\"job_title\":\"Director of Operations\",\"country\":\"United States\",\"industry\":\"Design Agency\",\"employee_count\":\"42\"},{\"company_name\":\"Lakepath Analytics\",\"website\":\"lakepath-analytics.example\",\"first_name\":\"Harper\",\"last_name\":\"Diaz\",\"job_title\":\"VP Marketing\",\"country\":\"United States\",\"industry\":\"Software\",\"employee_count\":\"75\"},{\"company_name\":\"Juniper Retail Group\",\"website\":\"juniper-retail.example\",\"first_name\":\"Henry\",\"last_name\":\"Brooks\",\"job_title\":\"Store Associate\",\"country\":\"United States\",\"industry\":\"Retail\",\"employee_count\":\"18\"},{\"company_name\":\"Fernwell Media\",\"website\":\"fernwell-media.example\",\"first_name\":\"Evelyn\",\"last_name\":\"Ward\",\"job_title\":\"Content Specialist\",\"country\":\"United Kingdom\",\"industry\":\"Media\",\"employee_count\":\"12\"},{\"company_name\":\"Solstice Hospitality\",\"website\":\"solstice-hospitality.example\",\"first_name\":\"Alexander\",\"last_name\":\"Ross\",\"job_title\":\"Guest Services Agent\",\"country\":\"France\",\"industry\":\"Hospitality\",\"employee_count\":\"105\"},{\"company_name\":\"Bridgepoint Machinery\",\"website\":\"bridgepoint-machinery.example\",\"first_name\":\"Grace\",\"last_name\":\"Perry\",\"job_title\":\"Procurement Director\",\"country\":\"\",\"industry\":\"Industrial Machinery\",\"employee_count\":\"225\"},{\"company_name\":\"Elmcrest Equipment\",\"website\":\"elmcrest-equipment.example\",\"first_name\":\"William\",\"last_name\":\"Long\",\"job_title\":\"Operations Manager\",\"country\":\"United States\",\"industry\":\"Industrial Equipment\",\"employee_count\":\"\"},{\"company_name\":\"Orion Process Works\",\"website\":\"orion-process.example\",\"first_name\":\"Chloe\",\"last_name\":\"Hall\",\"job_title\":\"\",\"country\":\"United States\",\"industry\":\"Manufacturing\",\"employee_count\":\"320\"},{\"company_name\":\"Hearthstone Engineering\",\"website\":\"\",\"first_name\":\"Jack\",\"last_name\":\"Young\",\"job_title\":\"Supply Chain Manager\",\"country\":\"United States\",\"industry\":\"Engineering Services\",\"employee_count\":\"68\"},{\"company_name\":\"Ridgewell Motion Systems\",\"website\":\"https://ridgewell-motion.example/\",\"first_name\":\"Olivia\",\"last_name\":\"Grant\",\"job_title\":\"VP Procurement\",\"country\":\"USA\",\"industry\":\"Industrial Machinery\",\"employee_count\":\"420\"},{\"company_name\":\"Northstar Fabrication\",\"website\":\"northstar-fabrication.example\",\"first_name\":\"Daniel\",\"last_name\":\"Reed\",\"job_title\":\"Director of Supply Chain\",\"country\":\"United States\",\"industry\":\"Manufacturing\",\"employee_count\":\"280\"},{\"company_name\":\"Cloudmarsh Software\",\"website\":\"cloudmarsh.example\",\"first_name\":\"Emily\",\"last_name\":\"King\",\"job_title\":\"Software Engineer\",\"country\":\"India\",\"industry\":\"Software\",\"employee_count\":\"1600\"},{\"company_name\":\"Redleaf Agricultural Co\",\"website\":\"redleaf-ag.example\",\"first_name\":\"Michael\",\"last_name\":\"Allen\",\"job_title\":\"Operations Manager\",\"country\":\"United States\",\"industry\":\"Agriculture\",\"employee_count\":\"8\"}];\nreturn rows.map(json => ({json}));"
+      },
+      "id": "cloud-02",
+      "name": "01 Demo Records",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const required=['company_name','website','first_name','last_name','job_title','country','industry','employee_count'];\nconst items=$input.all();\nreturn items.map(({json:r})=>{if(!r||typeof r!=='object')throw Error('Invalid lead');const missing=required.filter(k=>!String(r[k]??'').trim());return {json:{...r,_raw_records:items.length,validation_status:missing.length?'Incomplete':'Complete',missing_fields:missing.join('; ')}}});"
+      },
+      "id": "cloud-03",
+      "name": "02 Validation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const required=['company_name','website','first_name','last_name','job_title','country','industry','employee_count'];\nconst functions=[['Procurement',['procurement','sourcing']],['Supply Chain',['supply chain','logistics']],['Purchasing',['purchasing','buyer']],['Operations',['operations','plant manager']],['Human Resources',['human resources','people operations','hr ','hr manager']],['Talent Acquisition',['talent acquisition','recruiting','recruitment']]];\nreturn $input.all().map(({json:r})=>{const v=Object.fromEntries(required.map(k=>[k,String(r[k]??'').trim().replace(/\\s+/g,' ')]));\nconst country=v.country.toLowerCase().replace(/\\./g,'');if(['us','usa','united states','united states of america'].includes(country))v.country='United States';\nv.website=v.website.replace(/^https?:\\/\\//i,'').replace(/\\/+$/,'').toLowerCase();\nconst count=v.employee_count.replace(/,/g,'');v.employee_count=/^\\d+$/.test(count)&&Number(count)>0?String(Number(count)):'';\nconst title=v.job_title.toLowerCase();v.job_function=functions.find(([,terms])=>terms.some(t=>title.includes(t)))?.[0]??'Other';\nconst missing=required.filter(k=>!v[k]);return {json:{...v,_raw_records:r._raw_records,validation_status:missing.length?'Incomplete':'Complete',missing_fields:missing.join('; ')}}});"
+      },
+      "id": "cloud-04",
+      "name": "03 Normalization",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1020,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const seen=new Set(),out=[];for(const {json:r} of $input.all()){const email=String(r.email??'').trim().toLowerCase();const key=JSON.stringify(email?['email',email]:['identity',r.website,r.first_name.toLowerCase(),r.last_name.toLowerCase()]);if(seen.has(key)&&(email||(r.website&&(r.first_name||r.last_name))))continue;seen.add(key);out.push({json:r})}return out;"
+      },
+      "id": "cloud-05",
+      "name": "04 Deduplication",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const required=['company_name','website','first_name','last_name','job_title','country','industry','employee_count'];\nconst has=(s,terms)=>terms.some(t=>s.includes(t));\nconst roundEven=n=>{const x=Math.floor(n);return n-x===.5?(x%2?x+1:x):Math.round(n)};\nreturn $input.all().map(({json:r})=>{const t=r.job_title.toLowerCase(),i=r.industry.toLowerCase(),n=Number(r.employee_count||0);\nconst score_breakdown={\ngeography:r.country==='United States'?20:r.country?5:0,\nindustry:has(i,['manufactur','machinery','equipment','engineering','industrial'])?25:has(i,['construction','logistics','distribution','automation'])?13:i?3:0,\ncompany_size:n>=20&&n<=1000?15:n?7:0,\nseniority:has(t,['chief','vp','vice president','director','head of','owner','president'])?15:has(t,['manager','lead','supervisor'])?9:t?3:0,\njob_function:r.job_function!=='Other'?15:t?3:0,\ndata_completeness:roundEven(10*required.filter(k=>!!r[k]).length/required.length)};\nreturn {json:{...r,baseline_score:Object.values(score_breakdown).reduce((a,b)=>a+b,0),score_breakdown}}});"
+      },
+      "id": "cloud-06",
+      "name": "05 ICP Scoring",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return $input.all().map(({json:r})=>{const fit=['manufactur','machinery','equipment','engineering','industrial'].some(t=>r.industry.toLowerCase().includes(t));\nconst n=Number(r.employee_count||0),ideal=r.country==='United States'&&fit&&n>=20&&n<=1000&&r.job_function!=='Other';\nconst assessment=ideal&&r.baseline_score>=75?'strong':r.baseline_score>=50?'moderate':'weak';\nconst company=r.company_name||'your team',role=r.job_function.toLowerCase(),industry=r.industry||\"the company's sector\";\nreturn {json:{...r,ai_icp_assessment:assessment,ai_source:'mock',\nqualification_reason:({strong:'Strong',moderate:'Partial',weak:'Limited'}[assessment])+' ICP fit: '+(r.country||'unknown location')+', '+industry+', '+(r.employee_count||'unknown')+' employees, '+role+' role.',\noutreach_angle:r.job_function!=='Other'?'Explore how '+company+' handles '+role+' capacity and process consistency.':'Explore operational priorities at '+company+' before proposing a solution.',\npersonalized_opening:'Hi '+(r.first_name||'there')+', I noticed '+company+' works in '+industry+'; I\\'d be interested in how your team approaches '+role+' priorities.'}}});"
+      },
+      "id": "cloud-07",
+      "name": "06 Mock AI Qualification",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1800,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const adjustments={strong:5,moderate:0,weak:-5};\nreturn $input.all().map(({json:r})=>{const final_score=Math.max(0,Math.min(100,r.baseline_score+adjustments[r.ai_icp_assessment]));return {json:{...r,final_score,priority:final_score>=80?'Hot':final_score>=55?'Warm':'Cold'}}});"
+      },
+      "id": "cloud-08",
+      "name": "07 Final Classification",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2060,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const rows=$input.all().map(i=>i.json);if(!rows.length)throw Error('No leads');\nconst summary={record_type:'summary',raw_records:rows[0]._raw_records,unique_leads:rows.length,hot:rows.filter(r=>r.priority==='Hot').length,warm:rows.filter(r=>r.priority==='Warm').length,cold:rows.filter(r=>r.priority==='Cold').length,average_score:Math.round(rows.reduce((a,r)=>a+r.final_score,0)/rows.length*100)/100};\nif(summary.hot+summary.warm+summary.cold!==summary.unique_leads)throw Error('Priority totals do not match');\nreturn [{json:summary}];"
+      },
+      "id": "cloud-09",
+      "name": "08 Results Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "01 Demo Input": {
+      "main": [
+        [
+          {
+            "node": "01 Demo Records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "01 Demo Records": {
+      "main": [
+        [
+          {
+            "node": "02 Validation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02 Validation": {
+      "main": [
+        [
+          {
+            "node": "03 Normalization",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03 Normalization": {
+      "main": [
+        [
+          {
+            "node": "04 Deduplication",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "04 Deduplication": {
+      "main": [
+        [
+          {
+            "node": "05 ICP Scoring",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "05 ICP Scoring": {
+      "main": [
+        [
+          {
+            "node": "06 Mock AI Qualification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06 Mock AI Qualification": {
+      "main": [
+        [
+          {
+            "node": "07 Final Classification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07 Final Classification": {
+      "main": [
+        [
+          {
+            "node": "08 Results Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "tags": []
+}

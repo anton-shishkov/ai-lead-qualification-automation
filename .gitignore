@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.n8n/
+.n8n-local/
+.n8n-runtime/
+.npm-cache/
+.nimbalyst/
+data/*.tmp
+.n8n-local-broken/

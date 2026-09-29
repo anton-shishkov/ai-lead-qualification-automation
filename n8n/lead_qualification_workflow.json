@@ -1,0 +1,131 @@
+{
+  "name": "AI Lead Qualification & Enrichment — Local Demo",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "demo-manual-trigger",
+      "name": "01 Input | Run demo",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8765/run",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Demo-Action",
+              "value": "qualify"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "demo-local-http",
+      "name": "02–07 | Validate · normalize · dedupe · score · AI · classify",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        590,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const result = $input.first().json; if (result.status !== 'complete' || !Number.isInteger(result.unique_leads) || !result.output) throw new Error('Local processor returned an incomplete result'); if (result.hot + result.warm + result.cold !== result.unique_leads) throw new Error('Priority counts do not match unique lead count'); return [{ json: { ...result, verification: 'passed', next_step: 'Refresh the local Streamlit dashboard to review ranked leads and export the CSV.' } }];"
+      },
+      "id": "demo-check-output",
+      "name": "08 Output | Verify CSV summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 01 Input\nStart the local Python bridge with `python -m scripts.local_api`, then click Execute workflow. The bridge reads `data/sample_leads.csv`.",
+        "height": 190,
+        "width": 260,
+        "color": 5
+      },
+      "id": "note-input",
+      "name": "Input notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        170,
+        30
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 02–07 Processing\nA fixed HTTP Request to `127.0.0.1:8765` invokes the tested local Python modules: validation, normalization, deduplication, six-part ICP scoring, mock AI qualification, and safe final classification. No shell command or credential is used.",
+        "height": 190,
+        "width": 425,
+        "color": 4
+      },
+      "id": "note-processing",
+      "name": "Processing notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        475,
+        30
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 08 Output / 09 Errors\nThe processor writes `data/qualified_leads.csv`. This node checks the returned counts. HTTP failures or inconsistent results mark the execution as failed.",
+        "height": 190,
+        "width": 330,
+        "color": 6
+      },
+      "id": "note-output",
+      "name": "Output notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        915,
+        30
+      ]
+    }
+  ],
+  "connections": {
+    "01 Input | Run demo": {
+      "main": [
+        [
+          {
+            "node": "02–07 | Validate · normalize · dedupe · score · AI · classify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02–07 | Validate · normalize · dedupe · score · AI · classify": {
+      "main": [
+        [
+          {
+            "node": "08 Output | Verify CSV summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "tags": []
+}
