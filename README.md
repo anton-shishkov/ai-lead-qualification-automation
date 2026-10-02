@@ -2,6 +2,27 @@
 
 A local, fictional B2B sales-operations portfolio demo. It turns a raw CSV into deduplicated, scored leads with an ICP assessment, a short qualification reason, an outreach angle, and a personalized opening. A Streamlit dashboard makes the results easy to review and export. The default mock AI mode needs no account or API key.
 
+## Demo
+
+### Dashboard Overview
+
+![AI Lead Qualification Dashboard](docs/screenshots/dashboard-overview.png)
+
+### Automation Workflow
+
+![n8n Lead Qualification Workflow](docs/screenshots/n8n-workflow.png)
+
+### Lead Qualification & Personalized Outreach
+
+![Lead Qualification and Outreach](docs/screenshots/lead-qualification-outreach.png)
+
+<details>
+<summary>View analytics breakdown</summary>
+
+![Lead Analytics Breakdown](docs/screenshots/analytics-breakdown.png)
+
+</details>
+
 ## Business problem and design
 
 Sales teams often receive inconsistent lead lists and spend time reviewing poor-fit or duplicate contacts. This demo applies visible, repeatable ICP rules, then uses a replaceable AI provider for concise text. It does **not** claim verified enrichment from external databases: all output is derived from the input record and target ICP.
@@ -12,7 +33,7 @@ Python 3.10+ handles processing with the standard library; Streamlit powers the 
 
 ## Quick start on Windows PowerShell
 
-Open PowerShell in this folder (`D:\Upwork Portfolio\01 AI Lead Qualification`), then run:
+Open PowerShell in the cloned repository folder, then run:
 
 ```powershell
 python -m venv .venv
@@ -45,7 +66,7 @@ Open `http://localhost:5678`, complete local owner setup if prompted, and import
 
 The bridge binds only to `127.0.0.1`, accepts one fixed action, and exposes no file-path or shell parameters. The n8n export contains no credentials.
 
-## Real LLM integration later
+## Optional Live LLM integration
 
 Mock mode is the default. For an OpenAI-compatible chat-completions service, set `AI_MODE=live`, `LLM_API_URL`, `LLM_API_KEY`, and `LLM_MODEL` as environment variables, then run `python -m scripts.process_leads --mode live`. Copy `.env.example` for reference; Python intentionally does not load `.env` automatically. Never commit a populated `.env`. The live provider validates four JSON fields and falls back to deterministic mock text on malformed responses or API errors, marking `ai_source=mock_fallback`. The deterministic score can move only +5, 0, or −5 based on the validated assessment; it always stays in 0–100. The local n8n bridge intentionally stays in mock mode for a repeatable demo.
 
